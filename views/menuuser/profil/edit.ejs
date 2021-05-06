@@ -1,0 +1,93 @@
+<% layout('layouts/boilerplate')%>
+  <div class="col-12 mt-3 mb-3 d-flex justify-content-between">
+    <h4 class="text-uppercase"><i class="fas fa-user-cog mr-1"></i>Data User</h4>
+    <a href="/profil" class="btn btn-secondary"><i class="fas fa-arrow-left mr-1"></i>Kembali</a>
+  </div>
+
+  <% for(let profil of profils){ %>
+    <div class="card mb-4 d-flex flex-column justify-content-center">
+      <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Edit Data User
+      </div>
+
+      <form class="col-sm-12" method="POST" action="/profil/<%=profil.id%>?_method=PUT">
+        <div class="form-group row">
+          <label for="inputnama" class="col-sm-2 col-form-label">Nama</label>
+          <div class="col-sm-10">
+            <input type="text" name="profil[nama_user]" value="<%= profil.nama_user %>" class="form-control" id="inputnama"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputnama" class="col-sm-2 col-form-label">Username</label>
+          <div class="col-sm-10">
+            <input type="text" name="profil[username]" value="<%= profil.username %>" class="form-control" id="inputnama"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputnama" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+          <div class="col-sm-10">
+            <input type="date" name="profil[tgl_lahir]" value="<%= profil.tgl_lahir.toISOString().substr(0, 10) %>" class="form-control" id="inputnama"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="" class="col-sm-2 col-form-label">Golongan Darah</label>
+          <select class="col-sm-10 form-control" name="profil[gol_darah]" required>
+            <option value="" selected >--Gol Darah--</option>
+            <option value="A" <%if(profil.gol_darah==="A" ){%>
+              selected
+              <% } %> >A</option>
+            <option value="AB" <%if(profil.gol_darah==="AB" ){%>
+              selected
+              <% } %> >AB</option>
+            <option value="B" <%if(profil.gol_darah==="B" ){%>
+              selected
+              <% } %> >B</option>
+            <option value="O" <%if(profil.gol_darah==="O" ){%>
+              selected
+              <% } %> >O</option>
+          </select>
+        </div>
+
+        <div class="form-group row">
+          <label for="recipient-name" class="col-form-label col-sm-2">Jenis Kelamin</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="laki-laki" name="profil[jkel]" value="Laki-laki" <%if(profil.jkel==="Laki-laki" ){%>
+              checked
+              <% } %> >
+            <label class="form-check-label" for="laki-laki">
+              Laki-laki
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="profil[jkel]" value="Perempuan" id="perempuan" <%if(profil.jkel==="Perempuan" ){%>
+              checked
+              <% } %>>
+            <label class="form-check-label" for="perempuan">
+              Perempuan
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputnama" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="text" name="profil[password]" value="<%= profil.password %>" class="form-control" id="inputnama"
+              required>
+          </div>
+        </div>
+
+        <div class="form-group d-flex flex-row-reverse">
+          <button class="btn btn-success ml-1"><i class="fas fa-save mr-1"></i>Update</button>
+          <button class="btn btn-primary" type="reset" value="reset"><i class="fas fa-sync-alt mr-1"></i>Reset</button>
+        </div>
+
+      </form>
+      <% } %>
+    </div>

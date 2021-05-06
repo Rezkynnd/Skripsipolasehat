@@ -1,0 +1,194 @@
+<% layout('layouts/boilerplate')%>
+
+  <section id="minimal-statistics">
+    <div class="row">
+      <div class="col-12 mt-3 mb-3">
+        <h4 class="text-uppercase"><i class="fas fa-home mr-1"></i>Dashboard</h4>
+      </div>
+      <!-- Menu Admin -->
+      <% if(currentAdmin){ %>
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="fas fa-users primary font-large-2 float-left"></i>
+                </div>
+                <a href="/user" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3>Daftar User</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="fas fa-plus-square info font-large-2 float-left"></i>
+                </div>
+                <a href="/kolestrol" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3> Kolestrol</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="fas fa-plus-square info font-large-2 float-left"></i>
+                </div> 
+                <a href="/asamurat" class="align-self-center mr-1">
+                  <div class="media-body text-left">
+                    <h3> Asam Urat</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="fas fa-plus-square info font-large-2 float-left"></i>
+                </div>
+                <a href="/guladarah" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3> Gula Darah</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="fas fa-plus-square info font-large-2 float-left"></i>
+                </div>
+                <a href="/olahraga" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3> Olah Raga</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="icon-user primary font-large-2 float-left"></i>
+                </div>
+                <a href="/admin" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3>Data Admin</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+      <!-- Menu User -->
+      <% if(currentUser){ %>
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="fas fa-user primary font-large-2 float-left"></i>
+                </div>
+                <a href="/profil" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3>Profil</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="fas fa-first-aid primary font-large-2 float-left"></i>
+                </div>
+                <a href="/konsultasi" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3>Konsultasi</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      
+      <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex justify-content-md-left">
+                <div class="align-self-center mr-2">
+                  <i class="far fa-file-alt primary font-large-2 float-left"></i>
+                </div>
+                <a href="/riwayat" class="align-self-center mr-2">
+                  <div class="media-body text-left">
+                    <h3>Riwayat Konsul</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    <% } %> 
+
+
+
+
+    </div>
+  </section>

@@ -1,0 +1,220 @@
+<% layout('layouts/boilerplate')%>
+
+
+
+  <div class="col-12 mt-3 mb-3 d-flex justify-content-between">
+    <h4 class="text-uppercase"><i class="fas fa-chart-area mr-1"></i>Data Asam Urat</h4>
+  </div>
+
+  <ul class="nav nav-pills mb-3 bg-secondary text-white d-inline-block" id="pills-tab" role="tablist">
+    <li class="nav-item d-inline-block">
+      <a class="nav-link active text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Gula Asam Urat Rendah</a>
+    </li>
+    <li class="nav-item d-inline-block">
+      <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Asam Urat Tinggi</a>
+    </li>
+
+  </ul>
+
+
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between">
+          <div>
+            <i class="fas fa-table mr-1"></i>
+            Daftar Data Asam Urat Rendah
+          </div>
+          <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary"><i
+            class="fas fa-plus mr-1"></i>Tambah Data</a>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive" id="invoice">
+            <table class="table table-sm table-bordered text-center" id="invoice" width="100%" cellspacing="0">
+              <thead class="table-info">
+                <tr>
+                  <th class="p-3">No.</th>
+                  <th class="p-3">Nama Makanan</th>
+                  <th class="p-3">Jenis</th>
+                  <th class="p-3">Deskripsi</th>
+                  <th class="p-3">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let nomor=1; for(let rendah of rendahs){ %>
+                  <tr class="table-active">
+                    <td class="p-2 align-middle">
+                      <%= nomor++ %>
+                    </td>
+                        <td class="p-2 align-middle">
+                          <%= rendah.nm_makanan %>
+                        </td>
+                        <td class="p-2 align-middle">
+                          <%= rendah.keterangan %>
+                        </td>
+                        <td class="p-2 text-left align-middle">
+                          <%= rendah.description %>
+                        </td>
+                        <td class="d-flex p-3 align-middle justify-content-center align-items-center">
+                          <a class="btn btn-warning mr-1" href="/asamurat/<%= rendah.id %>/edit/rendah"><i class="fas fa-edit"></i></a>
+                          <form method="POST" action="/asamurat/<%= rendah.id %>/rendah?_method=DELETE">
+                            <button class="btn btn-danger" onclick="return confirm('Apakah yakin ingin menghapus data ini?')"><i
+                                class="fas fa-trash-alt"></i></button>
+                          </form>
+                        </td>
+                      </tr>
+                      <%} %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="container">
+        <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between">
+          <div>
+            <i class="fas fa-table mr-1"></i>
+            Daftar Data Asam Urat Tinggi
+          </div>
+          <a href="#" data-toggle="modal" data-target="#gdarahtinggi" class="btn btn-primary"><i
+            class="fas fa-plus mr-1"></i>Tambah Data</a>
+        </div>
+          <div class="card-body">
+            <div class="table-responsive" id="invoice">
+              <table class="table table-sm table-bordered text-center" id="invoice" width="100%" cellspacing="0">
+                <thead class="table-info">
+                  <tr>
+                    <th class="p-3">No.</th>
+                    <th class="p-3">Nama Makanan</th>
+                    <th class="p-3">Jenis</th>
+                    <th class="p-3">Deskripsi</th>
+                    <th class="p-3">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% let no=1; for(let tinggi of tinggis){ %>
+                    <tr class="table-active">
+                      <td class="p-2 align-middle">
+                        <%= no++ %>
+                      </td>
+                          <td class="p-2 align-middle">
+                            <%= tinggi.nm_makanan %>
+                          </td>
+                          <td class="p-2 align-middle">
+                            <%= tinggi.keterangan %>
+                          </td>
+                          <td class="p-2 text-left align-middle">
+                            <%= tinggi.description %>
+                          </td>
+                        </td>
+                        <td class="d-flex p-3 align-middle justify-content-center align-items-center">
+                          <a class="btn btn-warning mr-1" href="/asamurat/<%= tinggi.id %>/edit/tinggi"><i class="fas fa-edit"></i></a>
+                          <form method="POST" action="/asamurat/<%= tinggi.id %>/tinggi?_method=DELETE">
+                            <button class="btn btn-danger" onclick="return confirm('Apakah yakin ingin menghapus data ini?')"><i
+                                class="fas fa-trash-alt"></i></button>
+                          </form>
+                        </td>
+                        </tr>
+                        <%} %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+      <!-- Modal Tambah data gdarah rendah -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-plus mr-1"></i>Tambah Data Gula Darah Rendah</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- form tambah gdarah rendah -->
+            <form method="POST" action="/asamurat/rendah">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nama Makanan</label>
+                <input type="text" name="nm_makanan" class="form-control" id="recipient-name" required>
+              </div>
+              <div class="form-group">
+                <div class="form-group">
+                  <select class="custom-select" name="keterangan" required>
+                    <option value="" selected >--Jenis--</option>
+                    <option value="sehat">sehat</option>
+                    <option value="tidak sehat">tidak sehat</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Deskripsi</label>
+                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="9"></textarea>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" type="reset" value="reset"><i
+                class="fas fa-sync-alt mr-1"></i>Reset</button>
+            <button class="btn btn-success"><i class="fas fa-save mr-1"></i>Simpan</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+       <!-- Modal Tambah data gdarah tinggi -->
+       <div class="modal fade" id="gdarahtinggi" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-plus mr-1"></i>Tambah Data Gula Darah Tinggi</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             <!-- form tambah gdarah tinggi -->
+             <form method="POST" action="/asamurat/tinggi">
+               <div class="form-group">
+                 <label for="recipient-name" class="col-form-label">Nama Makanan</label>
+                 <input type="text" name="nm_makanan" class="form-control" id="recipient-name" required>
+               </div>
+               <div class="form-group">
+                 <div class="form-group">
+                   <select class="custom-select" name="keterangan" required>
+                     <option value="" selected >--Jenis--</option>
+                     <option value="sehat">sehat</option>
+                     <option value="tidak sehat">tidak sehat</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="form-group">
+                 <label for="exampleFormControlTextarea1">Deskripsi</label>
+                 <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="9"></textarea>
+               </div>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+             <button class="btn btn-primary" type="reset" value="reset"><i
+                 class="fas fa-sync-alt mr-1"></i>Reset</button>
+             <button class="btn btn-success"><i class="fas fa-save mr-1"></i>Simpan</button>
+           </div>
+           </form>
+         </div>
+       </div>
+     </div>
